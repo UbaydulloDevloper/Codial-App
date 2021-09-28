@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/codial_app_home"
+    app:startDestination="@id/codial_home">
+
+    <fragment
+        android:id="@+id/codial_home"
+        android:name="com.example.codial_app.Codial_home"
+        android:label="fragment_codial_home"
+        tools:layout="@layout/fragment_codial_home" >
+        <action
+            android:id="@+id/action_codial_home_to_kurslar_home"
+            app:destination="@id/kurslar_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/guruhlar_home"
+        android:name="com.example.codial_app.Guruhlar_home"
+        android:label="fragment_guruhlar_home"
+        tools:layout="@layout/fragment_guruhlar_home" />
+    <fragment
+        android:id="@+id/mentor_home"
+        android:name="com.example.codial_app.mentor_home"
+        android:label="fragment_mentor_home"
+        tools:layout="@layout/fragment_mentor_home" />
+    <fragment
+        android:id="@+id/kurslar_home"
+        android:name="com.example.codial_app.kurslar_home"
+        android:label="fragment_kurslar_home"
+        tools:layout="@layout/fragment_kurslar_home" />
+    <fragment
+        android:id="@+id/list_group"
+        android:name="com.example.codial_app.List_group"
+        android:label="fragment_list_group"
+        tools:layout="@layout/fragment_list_group" />
+</navigation>
