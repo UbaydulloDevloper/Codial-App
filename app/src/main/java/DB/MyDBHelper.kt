@@ -32,15 +32,12 @@ class MyDBHelper(context: Context) :
         database.insert(Constant_NAME.KURS_TABLE, null, contentValue)
         database.close()
     }
-
     override fun editKurs(kurs: Kurs): Int {
         TODO("Not yet implemented")
     }
-
     override fun deleteKurs(kurs: Kurs) {
         TODO("Not yet implemented")
     }
-
     @SuppressLint("Recycle")
     override fun getAllKurs(): List<Kurs> {
         val list = ArrayList<Kurs>()
@@ -57,7 +54,6 @@ class MyDBHelper(context: Context) :
         }
         return list
     }
-
     override fun getKursById(id: Int): Kurs {
         val database = this.readableDatabase
         val cursor = database.query(
@@ -88,11 +84,38 @@ class MyDBHelper(context: Context) :
     }
 
     override fun editGuruh(guruh: Guruh): Int {
-        TODO("Not yet implemented")
+        val database = this.writableDatabase
+        val contentValue = ContentValues()
+        contentValue.put(Constant_NAME.GURUH_ID, guruh.id)
+        contentValue.put(Constant_NAME.GURUH_NAME, guruh.name)
+        contentValue.put(Constant_NAME.GURUH_DAY, guruh.kunlar)
+        contentValue.put(Constant_NAME.GURUH_DATE, guruh.date)
+        contentValue.put(Constant_NAME.GURUH_KURS_ID, guruh.kurs_id?.id)
+        contentValue.put(Constant_NAME.GURUH_MENTOR_ID, guruh.mentor?.id)
+        return database.update(
+            Constant_NAME.GURUH_TABLE, contentValue, "${Constant_NAME.GURUH_ID} = ?",
+            arrayOf(guruh.id.toString())
+        )
     }
 
     override fun deleteGuruh(guruh: Guruh) {
-        TODO("Not yet implemented")
+        val database = this.writableDatabase
+        for (student in getAllStudent()) {
+            if (student.guruhId?.id == guruh.id) {
+                database.delete(
+                    Constant_NAME.STUDENT_TABLE,
+                    "${Constant_NAME.STUDENT_ID} = ?",
+                    arrayOf(student.id.toString())
+                )
+            }
+
+        }
+        database.delete(
+            Constant_NAME.GURUH_TABLE,
+            "${Constant_NAME.GURUH_ID} = ?",
+            arrayOf(guruh.id.toString())
+        )
+        database.close()
     }
 
     override fun getAllGuruh(): List<Guruh> {
@@ -157,11 +180,47 @@ class MyDBHelper(context: Context) :
     }
 
     override fun editMentor(mentor: Mentor): Int {
-        TODO("Not yet implemented")
+        val database = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(Constant_NAME.MENTOR_ID, mentor.id)
+        contentValues.put(Constant_NAME.MENTOR_LASTNAME, mentor.lastName)
+        contentValues.put(Constant_NAME.MENTOR_NAME, mentor.name)
+        contentValues.put(Constant_NAME.MENTOR_SURE_NAME, mentor.sureName)
+        contentValues.put(Constant_NAME.MENTOR_KURS_ID, mentor.kursId?.id)
+
+        return database.update(
+            Constant_NAME.MENTOR_TABLE, contentValues, "${Constant_NAME.MENTOR_ID}=?",
+            arrayOf(mentor.id.toString())
+        )
     }
 
     override fun deleteMentor(mentor: Mentor) {
-        TODO("Not yet implemented")
+        val database = this.writableDatabase
+        for (guruh in getAllGuruh()) {
+            if (guruh.mentor?.id == mentor.id) {
+                for (student in getAllStudent()) {
+                    if (student.guruhId?.id == guruh.id) {
+                        database.delete(
+                            Constant_NAME.STUDENT_TABLE,
+                            "${Constant_NAME.STUDENT_ID} = ?",
+                            arrayOf(student.id.toString())
+                        )
+                    }
+
+                }
+                database.delete(
+                    Constant_NAME.GURUH_TABLE,
+                    "${Constant_NAME.GURUH_ID} = ?",
+                    arrayOf(guruh.id.toString())
+                )
+            }
+        }
+        database.delete(
+            Constant_NAME.MENTOR_TABLE,
+            "${Constant_NAME.MENTOR_ID} = ?",
+            arrayOf(mentor.id.toString())
+        )
+        database.close()
     }
 
     override fun getAllMentor(): List<Mentor> {
@@ -223,11 +282,30 @@ class MyDBHelper(context: Context) :
     }
 
     override fun editStudent(student: Student): Int {
-        TODO("Not yet implemented")
+        val database = this.writableDatabase
+        val contentValue = ContentValues()
+        contentValue.put(Constant_NAME.STUDENT_ID, student.id)
+        contentValue.put(Constant_NAME.STUDENT_PHONE, student.phone)
+        contentValue.put(Constant_NAME.STUDENT_LASTNAME, student.lastname)
+        contentValue.put(Constant_NAME.STUDENT_NAME, student.name)
+        contentValue.put(Constant_NAME.STUDENT_GURUH_ID, student.guruhId?.id)
+        contentValue.put(Constant_NAME.STUDENT_REG_DATA, student.regDate)
+        contentValue.put(Constant_NAME.STUDENT_ID, student.id)
+
+        return database.update(
+            Constant_NAME.STUDENT_TABLE, contentValue, "${Constant_NAME.STUDENT_ID} = ?",
+            arrayOf(student.id.toString())
+        )
     }
 
     override fun deleteStudent(student: Student) {
-        TODO("Not yet implemented")
+        val database = this.writableDatabase
+        database.delete(
+            Constant_NAME.STUDENT_TABLE,
+            "${Constant_NAME.STUDENT_ID} = ?",
+            arrayOf(student.id.toString())
+        )
+        database.close()
     }
 
     override fun getAllStudent(): List<Student> {

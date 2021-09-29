@@ -28,10 +28,37 @@
         android:id="@+id/kurslar_home"
         android:name="com.example.codial_app.kurslar_home"
         android:label="fragment_kurslar_home"
-        tools:layout="@layout/fragment_kurslar_home" />
+        tools:layout="@layout/fragment_kurslar_home" >
+        <action
+            android:id="@+id/action_kurslar_home_to_list_group"
+            app:destination="@id/list_group" />
+        <action
+            android:id="@+id/action_kurslar_home_to_kursHaqida"
+            app:destination="@id/kursHaqida" />
+        <action
+            android:id="@+id/action_kurslar_home_to_mentor_home"
+            app:destination="@id/mentor_home" />
+        <action
+            android:id="@+id/action_kurslar_home_to_guruhlar_home"
+            app:destination="@id/guruhlar_home" />
+    </fragment>
     <fragment
         android:id="@+id/list_group"
         android:name="com.example.codial_app.List_group"
         android:label="fragment_list_group"
         tools:layout="@layout/fragment_list_group" />
+    <fragment
+        android:id="@+id/kursHaqida"
+        android:name="com.example.codial_app.KursHaqida"
+        android:label="fragment_kurs_haqida"
+        tools:layout="@layout/fragment_kurs_haqida" >
+        <action
+            android:id="@+id/action_kursHaqida_to_studentAdd"
+            app:destination="@id/studentAdd" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentAdd"
+        android:name="com.example.codial_app.StudentAdd"
+        android:label="fragment_student_add"
+        tools:layout="@layout/fragment_student_add" />
 </navigation>

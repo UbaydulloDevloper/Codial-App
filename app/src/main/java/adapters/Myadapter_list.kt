@@ -7,30 +7,29 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codial_app.R
+import com.example.codial_app.databinding.ItemRvBinding
 import kotlinx.android.synthetic.main.item_rv.view.*
 import models.Kurs
 import kotlin.coroutines.coroutineContext
 
-class MyadapterList(var context: Context ,var list: ArrayList<Kurs>, var click: Click) :
+class MyadapterList( var list: ArrayList<Kurs>, var click: Click) :
     RecyclerView.Adapter<MyadapterList.Vh>() {
-    inner class Vh(var itemRv: View) : RecyclerView.ViewHolder(itemRv.rootView), Click {
+    inner class Vh(var itemRv: ItemRvBinding) : RecyclerView.ViewHolder(itemRv.root) {
         fun onBind(name: Kurs, position: Int) {
-            itemRv.title_text.text = name.name
-            clickItem(position)
+            itemRv.titleText.text = name.name
+            itemRv.root.setOnClickListener {
+                click.clickItem(name, position)
+            }
+
         }
-
-        override fun clickItem(position: Int) {
-        }
-
-
     }
 
     interface Click {
-        fun clickItem(position: Int)
+        fun clickItem(kurs: Kurs, position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Vh {
-        return Vh(LayoutInflater.from(parent.context).inflate(R.layout.item_rv, parent, false))
+        return Vh(ItemRvBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: Vh, position: Int) {

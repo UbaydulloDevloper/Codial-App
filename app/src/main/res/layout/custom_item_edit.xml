@@ -15,11 +15,11 @@
 
 
         <EditText
-            android:id="@+id/edit_kurs_name"
+            android:id="@+id/edit_mentor_name"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="#E2DFDF"
-            android:hint="Kurs nomi"
+            android:hint="Mentor Name"
             android:inputType="text"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,22 +27,37 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/edit_kurs_about"
+            android:id="@+id/edit_mentor_lastName"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:background="#E2DFDF"
-            android:hint="Kurs haqida"
+            android:hint="Mentor Lastname"
             android:inputType="text"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_kurs_name"
+            app:layout_constraintTop_toBottomOf="@id/edit_mentor_name"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <EditText
+            android:id="@+id/edit_mentor_sureName"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_marginTop="15dp"
+            android:background="#E2DFDF"
+            android:hint="Mentor SureName"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_mentor_lastName"
             app:layout_constraintVertical_bias="0.1" />
 
         <TextView
-            android:id="@+id/click_back"
+            android:id="@+id/click_back_mentor_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30sp"
@@ -54,10 +69,10 @@
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_kurs_about" />
+            app:layout_constraintTop_toBottomOf="@id/edit_mentor_sureName" />
 
         <TextView
-            android:id="@+id/click_next"
+            android:id="@+id/click_next_edit_mentor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30sp"
@@ -67,9 +82,9 @@
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.7"
-            app:layout_constraintLeft_toRightOf="@id/click_back"
+            app:layout_constraintLeft_toRightOf="@id/click_back_mentor_edit"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_kurs_about" />
+            app:layout_constraintTop_toBottomOf="@id/edit_mentor_sureName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

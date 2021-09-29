@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentAdd">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/primary_color"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/click_back_guruhlar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_vector"
+            app:layout_constraintBottom_toBottomOf="@id/title_kurs_haqida"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/title_kurs_haqida"
+            app:layout_constraintTop_toTopOf="@id/title_kurs_haqida" />
+
+        <TextView
+            android:id="@+id/title_kurs_haqida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Android Developer"
+            android:textColor="@color/primary_text_color"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/student_lastName"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_margin="20sp"
+        android:background="#E2DFDF"
+        android:hint="Familiya"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/primary_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <EditText
+        android:id="@+id/student_Name"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_margin="20sp"
+        android:background="#E2DFDF"
+        android:hint="Ismi"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/primary_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/student_lastName" />
+
+    <EditText
+        android:id="@+id/student_sureName"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_margin="20sp"
+        android:background="#E2DFDF"
+        android:hint="Otasining ismi"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="@color/primary_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_Name" />
+
+    <EditText
+        android:id="@+id/student_reg_date"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_margin="20sp"
+        android:background="#E2DFDF"
+        android:hint="12/12/2021"
+        android:inputType="date"
+        android:padding="10dp"
+        android:textColor="@color/primary_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/student_sureName" />
+
+    <Spinner
+        android:id="@+id/spinner_student_mentor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:background="#E2DFDF"
+        android:backgroundTint="#E2DFDF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_reg_date" />
+
+    <Spinner
+        android:id="@+id/spinner_student_guruh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:background="#E2DFDF"
+        android:backgroundTint="#E2DFDF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_student_mentor" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/save_student_click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_color"
+        android:textColor="@color/primary_text_color"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="@+id/student_reg_date"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.95">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="19dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Saqlash"
+            android:textColor="@color/primary_text_color" />
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/calendar_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_calendar"
+        android:layout_marginRight="15dp"
+        app:layout_constraintTop_toTopOf="@+id/student_reg_date"
+        app:layout_constraintBottom_toBottomOf="@id/student_reg_date"
+        app:layout_constraintRight_toRightOf="@id/student_reg_date"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

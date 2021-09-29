@@ -3,6 +3,7 @@ package com.example.codial_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp()
-        var navconteroller = findNavController(R.id.fragment_nav)
+        return Navigation.findNavController(this, R.id.codial_app_home).navigateUp()
+
     }
 }

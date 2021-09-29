@@ -1,34 +1,38 @@
 package com.example.codial_app
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_codial_home.view.*
+import com.example.codial_app.databinding.FragmentCodialHomeBinding
 
 class Codial_home : Fragment() {
-    lateinit var root: View
+    lateinit var binding: FragmentCodialHomeBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        root = inflater.inflate(R.layout.fragment_codial_home, container, false)
+    ): View {
+        binding = FragmentCodialHomeBinding.inflate(LayoutInflater.from(context))
 
-        root.kurslar_click.setOnClickListener {
-            findNavController().navigate(R.id.action_codial_home_to_kurslar_home)
 
-        }
-        root.guruhlar_click.setOnClickListener {
-            findNavController().navigate(R.id.action_codial_home_to_kurslar_home)
+        binding.kurslarClick.setOnClickListener {
+            val bundle = bundleOf("key" to 1)
+            findNavController().navigate(R.id.action_codial_home_to_kurslar_home, bundle)
 
         }
-        root.mentor_click.setOnClickListener {
-            findNavController().navigate(R.id.action_codial_home_to_kurslar_home)
+        binding.guruhlarClick.setOnClickListener {
+            val bundle = bundleOf("key" to 2)
+            findNavController().navigate(R.id.action_codial_home_to_kurslar_home, bundle)
 
         }
+        binding.mentorClick.setOnClickListener {
+            val bundle = bundleOf("key" to 3)
+            findNavController().navigate(R.id.action_codial_home_to_kurslar_home, bundle)
+        }
 
-        return root
+        return binding.root
     }
 }
